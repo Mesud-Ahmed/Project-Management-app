@@ -6,7 +6,8 @@ import { useState } from "react"
 function App() {
   const [projects, setProjects] = useState({
     selectedProjectId: undefined,//if we are not adding project
-    allProjects: []
+    allProjects: [],
+    tasks: [],
   })
 
   const handleAddingProject = () => {
@@ -33,12 +34,25 @@ function App() {
       }
     })
   }
-  const handleDeleteProject = ()=>{
+  const handleAddTask = (text) => {
+    setProjects(prev => {
+      const newTask = {
+        text: text,
+        projectId: prev.selectedProjectId,
+        id: Math.random()
+      }
+      return {
+        ...prev,
+        tasks: [newTask, ...prev.tasks]
+      }
+    })
+  }
+  const handleDeleteProject = () => {
     setProjects(prevState => {
       return {
         ...prevState,
         selectedProjectId: undefined,
-        allProjects:projects.allProjects.filter((project) => project.id !== projects.selectedProjectId)
+        allProjects: projects.allProjects.filter((project) => project.id !== projects.selectedProjectId)
       }
     })
   }
@@ -55,9 +69,19 @@ function App() {
       }
     })
   }
+  const handleDeleteTask =()=>{
+    
+  }
   const selectedProject = projects.allProjects.find(project => project.id == projects.selectedProjectId)
-  
-  let content = <SelectedProject project={ selectedProject} onDelete={handleDeleteProject}/>
+
+  let content = (<SelectedProject
+          onAddTask={handleAddTask}
+          onDeleteTask={handleDeleteTask}
+          project={selectedProject}
+          onDelete={handleDeleteProject}
+          tasks = {projects.tasks}
+
+  />)
   if (projects.selectedProjectId === null) {
     content = <NewProject onNewProject={handleNewProject} onCancel={handleCancelProject} />
   } else if (projects.selectedProjectId === undefined) {
