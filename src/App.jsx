@@ -97,7 +97,7 @@ function App() {
     content = <NoProjectSelected onStartAddingProject={handleAddingProject} />
   }
   return (
-    <main className="h-screen my-8 flex gap-8">
+    <main className="h-screen  flex gap-8 bg-[#D4EBF8]">
       <ProjectsSidebar onStartAddingProject={handleAddingProject} projects={projects.allProjects} onSelectProject={handleSelectedProject} selectedProjectId={projects.selectedProjectId} />
       {content}
     </main>
