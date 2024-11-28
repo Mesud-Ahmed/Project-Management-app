@@ -1,8 +1,21 @@
-# React + Vite
+# Project Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and intuitive project management application built with React. 
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Project Management**: Create, view, and delete projects.
+- **Task Management**: Add and delete tasks associated with specific projects.
+- **Interactive UI**: Intuitive and user-friendly design.
+- **Validation**: Prevents empty project/task submissions.
+
+## Live Preview
+
+Check out the live demo [here](https://project-management-app-drab.vercel.app/?vercelToolbarCode=ijKgCzpQ_AM0uyP). 
+
+## Technologies Used
+
+- **Frontend**: React
+- **Styling**: TailwindCSS
+- **Icons/Assets**: Custom assets (e.g., `notebook.jpg`)
+- **Deployment**: Vercel

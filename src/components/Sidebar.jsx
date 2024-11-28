@@ -1,7 +1,7 @@
 import Button from "./Button"
 export default function ProjectsSidebar({ onStartAddingProject, projects, onSelectProject, selectedProjectId }) {
     return (
-        <aside className="w-1/3 bg-[#8174A0] py-8 px-16 text-stone-50 md:w-72 rounded-r-xl">
+        <aside className=" bg-[#8174A0] py-8 px-16 text-stone-50 md:w-72 rounded-r-xl">
             <h2 className="mb-8  font-bold uppercase md:text-xl text-stone-200">Your Projects</h2>
             <div>
                 <Button onClick={onStartAddingProject}>
