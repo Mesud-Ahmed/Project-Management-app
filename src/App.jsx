@@ -27,11 +27,13 @@ function App() {
     })
   }
   const handleSelectedProject = (id) => {
+    console.log(id)
     setProjects(prevState => {
       return {
         ...prevState,
         selectedProjectId: id
       }
+      
     })
   }
   const handleAddTask = (text) => {
@@ -41,6 +43,7 @@ function App() {
         projectId: prev.selectedProjectId,
         id: Math.random()
       }
+      console.log("New Task Added:", newTask);
       return {
         ...prev,
         tasks: [newTask, ...prev.tasks]
@@ -78,15 +81,15 @@ function App() {
       }
     })
   }
-  const selectedProject = projects.allProjects.find(project => project.id == projects.selectedProjectId)
-
+  const selectedProject = projects.allProjects.find((project) => project.id == projects.selectedProjectId)
+  const filteredTasks = projects.tasks.filter(task => task.projectId === projects.selectedProjectId);
   let content = (<SelectedProject
     onAddTask={handleAddTask}
     onDeleteTask={handleDeleteTask}
     project={selectedProject}
     onDelete={handleDeleteProject}
-    tasks={projects.tasks}
-
+    tasks={filteredTasks}
+    selectedProjectId={projects.selectedProjectId}
   />)
   if (projects.selectedProjectId === null) {
     content = <NewProject onNewProject={handleNewProject} onCancel={handleCancelProject} />
@@ -95,7 +98,7 @@ function App() {
   }
   return (
     <main className="h-screen my-8 flex gap-8">
-      <ProjectsSidebar onStartAddingProject={handleAddingProject} projects={projects.allProjects} onSelectProject={handleSelectedProject} />
+      <ProjectsSidebar onStartAddingProject={handleAddingProject} projects={projects.allProjects} onSelectProject={handleSelectedProject} selectedProjectId={projects.selectedProjectId} />
       {content}
     </main>
 
